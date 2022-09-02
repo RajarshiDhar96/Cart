@@ -11,6 +11,71 @@ class CartItem extends React.Component{
             qty:1,
             img:''
         }
+
+        this.testing();
+        // this.increaseQuantity=this.increaseQuantity.bind(this)
+    }
+
+
+    testing()
+    {
+        const promise=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve('done')
+            },5000)
+        })
+
+        promise.then(()=>{
+            this.setState({ qty:this.state.qty+10 });
+
+            this.setState({ qty:this.state.qty+10 });
+
+            this.setState({ qty:this.state.qty+10 });
+
+            console.log('state:- ', this.state);
+           
+        })
+       
+    }
+   
+    increaseQuantity=()=>
+    {
+        //setState re-render our component with the updated value
+
+
+        //Method 1
+        // this.setState({
+        //     qty:this.state.qty+1
+        // })
+
+
+        //Method 2
+
+        this.setState((prevState)=>{
+            return{
+                qty:prevState.qty+1
+            }
+        },()=>{ console.log("this.state: ",this.state);})
+        
+    }
+
+    decreaseQuantity=()=>
+    {
+        if(this.state.qty>0)
+        {
+            this.setState((prevState)=>{
+                return{
+                    qty:prevState.qty-1
+                }
+            },()=>{ console.log("this.state: ",this.state);})
+
+
+           
+    
+
+        }
+        
+       
     }
 
     render(){
@@ -37,9 +102,25 @@ class CartItem extends React.Component{
             
                 <div className='cart-item-actions'>
 
-                    <img alt='increase' className='action-icons' src='https://cdn-icons-png.flaticon.com/512/4315/4315609.png'/>
-                    <img alt='decrease' className='action-icons' src='https://cdn-icons-png.flaticon.com/512/7080/7080604.png'/>
-                    <img alt='delete' className='action-icons' src='https://cdn-icons-png.flaticon.com/512/3221/3221897.png'/>
+                    <img 
+                        alt='increase' 
+                        className='action-icons' 
+                        src='https://cdn-icons-png.flaticon.com/512/4315/4315609.png'
+                        onClick={this.increaseQuantity}
+                    />
+
+                    <img 
+                        alt='decrease' 
+                        className='action-icons' 
+                        src='https://cdn-icons-png.flaticon.com/512/7080/7080604.png'
+                        onClick={this.decreaseQuantity}
+                    />
+
+                    <img 
+                        alt='delete' 
+                        className='action-icons' 
+                        src='https://cdn-icons-png.flaticon.com/512/3221/3221897.png'
+                    />
 
                 </div>
 
@@ -61,3 +142,9 @@ const styles={
     }
 }
 export default CartItem;
+
+
+
+
+//Batching is when React groups multiple state updates into a single re-render
+ //for better performance
