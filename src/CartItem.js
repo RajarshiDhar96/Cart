@@ -4,42 +4,10 @@ import React from 'react';
 //for a class component to be react component we have to give a render method
 class CartItem extends React.Component{
     //state is a built-in React object that is used to contain data or information about the component
-    constructor()
-    {
-        super();
-        this.state={
-            price:1000,
-            title:'Mobile Phone',
-            qty:1,
-            img:''
-        }
-
-        this.testing();
-        // this.increaseQuantity=this.increaseQuantity.bind(this)
-    }
-
-
-    testing()
-    {
-        const promise=new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve('done')
-            },5000)
-        })
-
-        promise.then(()=>{
-            this.setState({ qty:this.state.qty+10 });
-
-            this.setState({ qty:this.state.qty+10 });
-
-            this.setState({ qty:this.state.qty+10 });
-
-            console.log('state:- ', this.state);
-           
-        })
-       
-    }
    
+
+
+    
     increaseQuantity=()=>
     {
         //setState re-render our component with the updated value
@@ -82,7 +50,9 @@ class CartItem extends React.Component{
 
     render(){
 
-        const{price,title,qty}=this.state;
+        console.log('this.props ',this.props.product);
+
+        const{price,title,qty}=this.props.product;
 
 
 
@@ -150,3 +120,5 @@ export default CartItem;
 
 //Batching is when React groups multiple state updates into a single re-render
  //for better performance
+
+ //Props: used to pass data from a parent component to a child component in React
