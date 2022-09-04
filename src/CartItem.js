@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 //for a class component to be react component we have to give a render method
 class CartItem extends React.Component{
     //state is a built-in React object that is used to contain data or information about the component
