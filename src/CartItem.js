@@ -2,7 +2,7 @@ import React from 'react';
 
 
 //for a class component to be react component we have to give a render method
-class CartItem extends React.Component{
+const CartItem=(props)=>{
     //state is a built-in React object that is used to contain data or information about the component
    
 
@@ -10,12 +10,12 @@ class CartItem extends React.Component{
     
    
 
-    render(){
+ 
 
-        console.log('this.props ',this.props);
+       
 
-        const{price,title,qty}=this.props.product;
-        const {product, onIncreaseQuantity, onDecreaseQuantity,onDeleteProduct}=this.props;
+        const{price,title,qty}=props.product;
+        const {product, onIncreaseQuantity, onDecreaseQuantity,onDeleteProduct}=props;
 
 
 
@@ -25,7 +25,7 @@ class CartItem extends React.Component{
 
             <div className='left-block'>
 
-                <img style={styles.image}/>
+                <img style={styles.image} src={product.img}  />
 
             </div>
 
@@ -65,7 +65,7 @@ class CartItem extends React.Component{
         </div>
         )
 
-    }
+    
 }
 //We have to give the styles by converting it into a object
 const styles={
